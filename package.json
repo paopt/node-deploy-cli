@@ -1,0 +1,61 @@
+{
+  "name": "deploy",
+  "version": "1.0.3",
+  "description": "node实现前端自动化部署",
+  "main": "index.js",
+  "bin": "./bin/index.js",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky",
+    "lint": "eslint --fix",
+    "commitlint": "commitlint --edit",
+    "commit": "cz",
+    "build": "tsc --build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "inquirer": "^12.0.1",
+    "node-ssh": "^13.2.0",
+    "ora": "^8.1.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@eslint/js": "^9.13.0",
+    "@types/archiver": "^6.0.3",
+    "@types/node": "^22.8.2",
+    "@types/ssh2": "^1.15.1",
+    "commitizen": "^4.3.1",
+    "commitlint-config-cz": "^0.13.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.2.1",
+    "eslint": "^9.13.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "esno": "^4.8.0",
+    "globals": "^15.11.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "3.3.3",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.11.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./.cz-config.cjs"
+    }
+  },
+  "lint-staged": {
+    "./src/**/*.{ts}": [
+      "eslint --fix"
+    ]
+  }
+}
