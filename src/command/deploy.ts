@@ -1,42 +1,27 @@
 import * as path from 'node:path'
-import chalk from 'chalk'
 import pkg from '../../package.json'
 import { compress } from '../utils/compress'
 import { login } from '../utils/ssh'
 import { uploadFiles } from '../utils/upload'
-import { runRemoteCommand } from '../utils/remoteCommand'
+import * as log from '../utils/log'
+import { DeployEnvConfig } from '../types'
+import { unzip } from '../utils/remoteActions'
 
-export async function deploy(env: string) {
-  console.log(env)
-  const config = {
-    name: '项目A',
-    ssh: {
-      host: '118.31.167.102',
-      username: 'root',
-      password: 'paopao123@',
-    },
-    localDir: './demo',
-    remoteDir: '/var/www/test-demo/',
-  }
-
+export async function deploy(config: DeployEnvConfig) {
   try {
-    const localFile = path.resolve(process.cwd(), config.localDir)
-    const zipFile = path.resolve(process.cwd(), config.localDir, 'dist.zip')
-    await compress(localFile, zipFile)
-    const ssh = await login(config.ssh)
-    // 上传
-    const remoteFile = config.remoteDir + 'dist.zip'
-    await uploadFiles(ssh, zipFile, remoteFile, pkg.version)
+    const filename = 'dist.zip'
+    const localDir = path.resolve(process.cwd(), config.localDir)
+    const zipFile = await compress(localDir, filename)
+    const ssh = await login(config)
+    await uploadFiles(ssh, zipFile, config.remoteDir, filename)
+    await unzip(ssh, config.remoteDir, filename, pkg.version)
 
-    // 解压
-    await runRemoteCommand(ssh, `unzip ${remoteFile}`, config.remoteDir)
-    await runRemoteCommand(ssh, `rm -rf v${pkg.version}`, config.remoteDir)
-    await runRemoteCommand(ssh, `rm -rf ${remoteFile}`, config.remoteDir)
-    await runRemoteCommand(ssh, `mv dist v${pkg.version}`, config.remoteDir)
-
-    console.log(chalk.blue('部署成功'))
+    console.log()
+    console.log(log.success('恭喜你，部署成功了！😁😁😁😁😁😁'))
+    console.log()
   } catch (err) {
-    console.log(chalk.red('部署失败'), err)
+    log.warn('部署失败')
+    console.log(err)
     process.exit()
   } finally {
     process.exit()

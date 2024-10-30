@@ -1,0 +1,17 @@
+{
+  "name": "test-demo",
+  "test": {
+    "username": "root",
+    "password": "paopao123@",
+    "host": "118.31.167.102",
+    "localDir": "demo",
+    "remoteDir": "/var/www/deploy-demo/"
+  },
+  "prod": {
+    "username": "root",
+    "password": "paopao123@",
+    "host": "118.31.167.102",
+    "localDir": "demo",
+    "remoteDir": "/var/www/deploy-demo/"
+  }
+}

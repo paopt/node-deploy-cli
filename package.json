@@ -1,20 +1,27 @@
 {
   "name": "deploy",
   "version": "1.0.3",
-  "description": "node实现前端自动化部署",
+  "description": "node自动化部署前端项目",
   "main": "index.js",
-  "bin": "./bin/index.js",
+  "bin": {
+    "deploy": "./bin/index.js"
+  },
   "type": "module",
   "scripts": {
+    "dev": "tsc -w",
     "prepare": "husky",
     "lint": "eslint --fix",
     "commitlint": "commitlint --edit",
     "commit": "cz",
     "build": "tsc --build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["node", "deploy"],
+  "author": "paopaot",
+  "license": "MIT",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/paopt/node-deploy"
+  },
   "dependencies": {
     "archiver": "^7.0.1",
     "chalk": "^5.3.0",

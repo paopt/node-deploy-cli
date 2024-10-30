@@ -1,25 +1,31 @@
 import * as fs from 'node:fs'
+import * as path from 'node:path'
 import archiver from 'archiver'
-import chalk from 'chalk'
 import ora from 'ora'
+import * as log from '../utils/log'
 
-export async function compress(source: string, destination: string) {
+export async function compress(
+  localDir: string,
+  filename: string,
+): Promise<string> {
   return new Promise((resolve, reject) => {
+    console.log()
     const spinner = ora().start()
-    console.log(chalk.blue(`压缩文件，目录: ${source}`))
+    console.log(`1、压缩 ${log.info(localDir)}`)
 
-    const output = fs.createWriteStream(destination)
+    const localPath = path.resolve(localDir, filename)
+    const output = fs.createWriteStream(localPath)
     const archive = archiver('zip', {
       zlib: { level: 9 }, // Sets the compression level.
     })
 
     output.on('close', function () {
       spinner.succeed(
-        chalk.blue(
-          `压缩成功！共计${(archive.pointer() / 1024 / 1024).toFixed(3)}MB`,
+        log.success(
+          `压缩成功！${filename}共计${(archive.pointer() / 1024 / 1024).toFixed(3)}MB`,
         ),
       )
-      resolve(null)
+      resolve(localPath)
     })
 
     archive.on('error', function () {
@@ -27,7 +33,7 @@ export async function compress(source: string, destination: string) {
     })
 
     archive.pipe(output)
-    archive.directory(source, 'dist')
+    archive.directory(localDir, 'dist')
     archive.finalize()
   })
 }

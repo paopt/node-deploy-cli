@@ -1,20 +1,22 @@
 import * as fs from 'node:fs'
+import * as path from 'node:path'
 import { NodeSSH } from 'node-ssh'
-import chalk from 'chalk'
 import ora from 'ora'
+import * as log from '../utils/log'
 
 export async function uploadFiles(
   ssh: NodeSSH,
   localPath: string,
-  remotePath: string,
+  remoteDir: string,
+  filename: string,
 ) {
+  console.log()
   const spinner = ora().start()
-  console.log(chalk.blue('上传文件：'))
-  console.log(`本地文件：${localPath}`)
-  console.log(`服务器目录：${remotePath}`)
+  console.log(`3、上传文件 ${log.info(filename)} 到 ${log.info(remoteDir)}`)
 
+  const remotePath = path.resolve(remoteDir, filename)
   await ssh.putFile(localPath, remotePath)
 
   fs.rmSync(localPath)
-  spinner.succeed(chalk.blue('上传成功！'))
+  spinner.succeed(log.success('上传成功'))
 }
