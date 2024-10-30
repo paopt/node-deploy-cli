@@ -1,8 +1,8 @@
 {
-  "name": "deploy",
-  "version": "1.0.3",
-  "description": "node自动化部署前端项目",
-  "main": "index.js",
+  "name": "node-deploy-cli",
+  "version": "1.0.0",
+  "description": "自动化部署cli",
+  "main": "lib/index.js",
   "bin": {
     "deploy": "./bin/index.js"
   },
@@ -15,9 +15,15 @@
     "commit": "cz",
     "build": "tsc --build"
   },
-  "keywords": ["node", "deploy"],
+  "keywords": ["node", "deploy", "cli"],
   "author": "paopaot",
   "license": "MIT",
+  "files": [
+    "bin",
+    "lib",
+    "package.json",
+    "readme.md"
+  ],
   "repository": {
       "type": "git",
       "url": "https://github.com/paopt/node-deploy"
