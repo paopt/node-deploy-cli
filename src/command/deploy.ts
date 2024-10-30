@@ -6,7 +6,8 @@ import { login } from '../utils/ssh'
 import { uploadFiles } from '../utils/upload'
 import { runRemoteCommand } from '../utils/remoteCommand'
 
-export async function deploy() {
+export async function deploy(env: string) {
+  console.log(env)
   const config = {
     name: '项目A',
     ssh: {
