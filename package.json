@@ -1,6 +1,6 @@
 {
   "name": "node-deploy-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "自动化部署cli",
   "main": "lib/index.js",
   "bin": {
