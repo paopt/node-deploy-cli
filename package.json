@@ -2,6 +2,7 @@
   "name": "node-deploy-cli",
   "version": "1.0.2",
   "description": "自动化部署cli",
+  "keywords": ["node", "web", "deploy"],
   "main": "lib/index.js",
   "bin": {
     "deploy": "bin/index.js"
@@ -26,7 +27,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paopt/node-deploy.git"
+    "url": "git+https://github.com/paopt/node-deploy-cli.git"
   },
   "publishConfig": {
     "access": "public",
