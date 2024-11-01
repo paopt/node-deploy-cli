@@ -1,11 +1,11 @@
-# node-deploy
+# node-deploy-cli
 
-node部署前端项目
+一个cli工具，用于部署代码到服务器。适用于小团队。
 
 ## 安装
 
 ```node
-npm install node-deply-cli --save-dev
+npm install node-deploy-cli --save-dev
 ```
 
 ## 使用
