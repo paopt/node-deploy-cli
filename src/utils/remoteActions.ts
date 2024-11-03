@@ -1,4 +1,3 @@
-import * as path from 'node:path'
 import { NodeSSH } from 'node-ssh'
 import ora from 'ora'
 import * as log from './log.js'
@@ -14,7 +13,7 @@ export async function unzip(
   spinner.start()
   console.log('4、解压缩')
   spinner.start()
-  const remoteFile = path.resolve(remoteDir, filename)
+  const remoteFile = remoteDir + filename
   await runRemoteCommand(ssh, `unzip ${remoteFile}`, remoteDir)
   await runRemoteCommand(ssh, `rm -rf v${version}`, remoteDir)
   await runRemoteCommand(ssh, `rm -rf ${remoteFile}`, remoteDir)

@@ -1,5 +1,4 @@
 import * as fs from 'node:fs'
-import * as path from 'node:path'
 import { NodeSSH } from 'node-ssh'
 import ora from 'ora'
 import * as log from '../utils/log.js'
@@ -12,11 +11,9 @@ export async function uploadFiles(
 ) {
   console.log()
   const spinner = ora().start()
-  console.log(`3、上传文件 ${log.info(filename)} 到 ${log.info(remoteDir)}`)
-
-  const remotePath = path.resolve(remoteDir, filename)
+  const remotePath = remoteDir + filename
+  console.log(`3、上传文件 ${log.info(filename)} 到 ${log.info(remotePath)}`)
   await ssh.putFile(localPath, remotePath)
-
   fs.rmSync(localPath)
   spinner.succeed(log.success('上传成功'))
 }
