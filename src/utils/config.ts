@@ -1,7 +1,7 @@
 import * as path from 'node:path'
 import * as fs from 'node:fs'
-import * as log from './log'
-import { DeployConfig } from '../types'
+import * as log from './log.js'
+import { DeployConfig } from '../types/index.js'
 
 export async function getConfig(env: string) {
   const cwd = process.cwd()

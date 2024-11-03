@@ -2,7 +2,7 @@ import * as fs from 'node:fs'
 import * as path from 'node:path'
 import { NodeSSH } from 'node-ssh'
 import ora from 'ora'
-import * as log from '../utils/log'
+import * as log from '../utils/log.js'
 
 export async function uploadFiles(
   ssh: NodeSSH,

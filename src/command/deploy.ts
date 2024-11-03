@@ -1,11 +1,11 @@
 import * as path from 'node:path'
-import pkg from '../../package.json'
-import { compress } from '../utils/compress'
-import { login } from '../utils/ssh'
-import { uploadFiles } from '../utils/upload'
-import * as log from '../utils/log'
-import { DeployEnvConfig } from '../types'
-import { unzip } from '../utils/remoteActions'
+import { pkg } from '../utils/pkg.js'
+import { compress } from '../utils/compress.js'
+import { login } from '../utils/ssh.js'
+import { uploadFiles } from '../utils/upload.js'
+import * as log from '../utils/log.js'
+import { DeployEnvConfig } from '../types/index.js'
+import { unzip } from '../utils/remoteActions.js'
 
 export async function deploy(config: DeployEnvConfig) {
   try {

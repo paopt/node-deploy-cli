@@ -1,1 +1,1 @@
-{"root":["./src/index.ts"],"version":"5.6.3"}
+{"root":["./src/index.ts","./src/command/deploy.ts","./src/command/init.ts","./src/types/index.ts","./src/utils/compress.ts","./src/utils/config.ts","./src/utils/log.ts","./src/utils/pkg.ts","./src/utils/remoteactions.ts","./src/utils/ssh.ts","./src/utils/upload.ts"],"version":"5.6.3"}

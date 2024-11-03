@@ -2,7 +2,7 @@ import * as fs from 'node:fs'
 import * as path from 'node:path'
 import archiver from 'archiver'
 import ora from 'ora'
-import * as log from '../utils/log'
+import * as log from '../utils/log.js'
 
 export async function compress(
   localDir: string,

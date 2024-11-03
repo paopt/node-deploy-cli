@@ -1,13 +1,13 @@
 {
   "name": "node-deploy-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "自动化部署cli",
   "keywords": ["node", "web", "deploy"],
   "main": "lib/index.js",
+  "type": "module",
   "bin": {
     "deploy": "bin/index.js"
   },
-  "type": "module",
   "license": "MIT",
   "scripts": {
     "dev": "tsc -w",
@@ -23,7 +23,8 @@
     "package.json",
     "readme.md",
     "LICENSE",
-    "images"
+    "images",
+    "template"
   ],
   "repository": {
     "type": "git",

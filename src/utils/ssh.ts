@@ -1,7 +1,7 @@
 import { NodeSSH } from 'node-ssh'
 import ora from 'ora'
-import { DeployEnvConfig } from '../types'
-import * as log from '../utils/log'
+import { DeployEnvConfig } from '../types/index.js'
+import * as log from '../utils/log.js'
 
 export async function login(options: DeployEnvConfig) {
   console.log()

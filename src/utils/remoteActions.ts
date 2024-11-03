@@ -1,7 +1,7 @@
 import * as path from 'node:path'
 import { NodeSSH } from 'node-ssh'
 import ora from 'ora'
-import * as log from './log'
+import * as log from './log.js'
 
 export async function unzip(
   ssh: NodeSSH,

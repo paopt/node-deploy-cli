@@ -1,10 +1,10 @@
 import { program } from 'commander'
-import { deploy } from './command/deploy'
-import { init } from './command/init'
+import { deploy } from './command/deploy.js'
+import { init } from './command/init.js'
 import inquirer from 'inquirer'
-import pkg from '../package.json'
-import { getConfig } from './utils/config'
-import * as log from './utils/log'
+import { getConfig } from './utils/config.js'
+import * as log from './utils/log.js'
+import { pkg } from './utils/pkg.js'
 
 program
   .name('node-deploy')
